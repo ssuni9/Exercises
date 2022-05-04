@@ -1,0 +1,127 @@
+public class FranquiaDoChurras {
+    static integer qtdeFranquiasPais = 0;
+    static integer acumuladoTotal = 0;
+    Integer caixaFranquia = 0;
+    String cidade;
+    
+    public void criarFranquia (String novaCidade, Integer vInicial){
+        cidade = novaCidade;
+        caixaFranquia = vInicial;
+        
+        acumuladoTotal = acumuladoTotal + caixaFranquia;
+        qtdeFranquiasPais++;
+    }
+    
+    public integer getQtdeFranquias(){
+        return qtdeFranquiasPais;
+    }
+    
+    public String getFranquia(){
+        return cidade;
+    } 
+    
+    public integer getCaixaFranquia(){
+        return caixaFranquia;   
+    }
+    
+    public integer getAcumuladoTotal(){
+        return acumuladoTotal;
+    }
+    
+    public void infoFranquia(){
+        System.debug('\nEssa franquia está na cidade de ' + cidade + '\n capital: R$ ' + caixaFranquia + '\n ' + 
+                    '\n DoChurras possui ' + qtdeFranquiasPais + 'espalhados pelo país.' + 
+                     '\n Patrimonio acumulado: R$' + acumuladoTotal);
+        
+    }
+  }
+
+----- Fazendo o teste
+
+@isTest
+public class FranquiaDoChurrasTest {
+   @isTest
+    public static void testFranquia(){
+        //Criar instancias da classe
+        //Todos os comando que vao estar dentro do método
+        FranquiaDoChurras test = new FranquiaDoChurras();
+        FranquiaDoChurras test2 = new FranquiadoChurras();
+        //Recebendo dados
+        integer qtdeTest = test.getQtdeFranquias();
+        integer acumuladoTest = test.getacumuladoTotal();
+        
+        //Retorno das infos
+        system.assertEquals(0, qtdeTest, 'Os valores não são iguais');
+        system.assertEquals(0, acumuladoTest, 'os valores não são iguais');
+    }
+}
+
+----------------------------------------
+Exemplo Fe
+
+trigger OpportunityTrigger on Opportunity (before insert) {
+     for(Opportunity opp : Trigger.new){
+         if(opp.Amount >= 100000 && opp.Amount <= 200000){
+             opp.StageName = 'Value Proposition';
+         }else {
+             opp.StageName = 'Prospecting';
+         }
+     }
+}
+
+Teste
+
+@isTest
+public class OpportunityTriggerTest {
+    @isTest
+    public static void beforeInsertTest(){
+        //com valores obrigatorios, name, data de fechamento, fase
+        opportunity opp = new opportunity(
+            name = 'Oportunidade :)',
+            amount = 120000,
+            stagename = 'Qualification',
+            closeDate = system.today()
+        );a
+        insert opp;
+        
+        opportunity oppt = [SELECT id, stageName FROM opportunity];
+        system.assertEquals('Value Proposition', oppt.stageName, 'Não bate');
+    }
+
+}
+
+
+----------------------------------------
+
+@isTest
+public class OpportunityTriggerTestando {
+
+    @isTest
+    public static void beforeInsertTest(){
+        List<Opportunity> listTest = new List<Opportunity>();
+        
+        listTest.add(new Opportunity(
+       		name = 'Oportunidade Teste 1',
+            amount = 120000,
+            stageName = 'Qualification',
+            closeDate = System.today()
+        ));
+        
+        listTest.add(new Opportunity(
+       		name = 'Oportunidade Teste 2',
+            amount = 1000,
+            stageName = 'Qualification',
+            closeDate = System.today()
+        ));
+        
+        insert listTest;
+        
+       List<Opportunity> opps = [SELECT id, stageName from opportunity];
+        System.assertEquals('Value Proposition', opps[0].stageName);
+        System.assertEquals('Prospecting', opps[1].stageName);
+    }
+    
+        
+}
+
+
