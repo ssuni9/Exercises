@@ -1,0 +1,88 @@
+imprima valores de 0 até 500 de 5 em 5 
+imprima valores de 4 até 250 de 4 em 4
+ imprima valores de 200 até 2
+ imprima valores de 300 até 3 de 3 em 3.
+
+for(integer contar = 0; contar <=500;contar +=5){
+    system.debug(contar);
+}
+
+for(integer contar = 4; contar <=250;contar +=4){
+    system.debug(contar);
+}
+
+
+for(integer contar = 200; contar >=2;contar -=2){
+    system.debug(contar);
+}
+
+for(integer contar = 300; contar >=3;contar -=3){
+    system.debug(contar);
+}
+
+--------------------------------------------------------
+
+/*dentro do intervalo de 1 a 100, 
+imprimir apenas de 1 a 10 e 90 a 100.
+*/
+    
+for(integer c = 1; c<=100; c++){
+    if((c<=10) || (c>=90)){
+        system.debug(c);
+    }
+}
+-------------------------------------
+Imprimir nome
+for(integer c = 1; c<=100; c++){
+    if((c>=0) || (c>=100)){
+        system.debug(c + ' : ' + 'Marcela Souza dos Santos');
+    }
+
+
+-------------------------------------
+integer contador = 0;
+
+while(contador <=500){
+    system.debug(contador);
+       contador +=5;
+}
+
+-------------------------------------
+
+integer contador = 4;
+
+while(contador <=250){
+    system.debug(contador);
+       contador +=4;
+}
+
+-------------------------------------
+integer contador = 200;
+
+while(contador >=2){
+    system.debug(contador);
+       contador --;
+}
+
+-------------------------------------
+
+integer contador = 300;
+
+while(contador >=3){
+    system.debug(contador);
+       contador -=3;
+}
+
+
+
+integer contador = 300;
+
+do{
+    system.debug(contador);
+    contador -=3;
+}while(contador >=3);
+
+
+
+
+
