@@ -1,0 +1,134 @@
+List<Account> accounts = [SELECT name, Phone, Type FROM Account];
+
+COM SYSTEM.DEBUG
+List<Account> accounts = [SELECT name, Phone, Type FROM Account];
+
+system.debug(accounts);
+
+
+GUARDANDO OS DADOS
+List<Account> lstAcc = [SELECT name, Phone, Type FROM Account];
+
+system.debug('accounts' + lstAcc);
+
+
+BUSCANDO NA LISTA E FAZENDO A IMPRESSÃO DE CADA SYSTEM COM OS CAMPOS QUE EU QUERO
+list<Account> lstAcc = [SELECT Id, name, phone, annualrevenue FROM Account];
+
+for(Account acounts : lstAcc){
+    system.debug('Nome: ' + acounts.Name);
+    system.debug('Telefone: ' +acounts.Phone);
+    system.debug('\n');
+}
+
+
+COM OBJETOS PERSONALIZADOS
+list<Sistema__c> listSistem = [SELECT Name, valor__c FROM Sistema__c];
+
+for(Sistema__c sistem : listSistem){
+    system.debug('Nome: ' + sistem.name);
+    system.debug('Valor: ' + sistem.Valor__c);
+    system.debug('\n');
+}
+
+USANDO O MAP
+Map<id, Sistema__c> sistemas = new Map<id, Sistemas__c>([SELECT Name, Valor__c FROM Sistemas__c]);
+system.debug('Map \n' + sistemas + '\n');
+
+    for(Sistemas__c sistemas.values()){
+        system.debug('Name ' + sistemas.name);
+        system.debug('Valor ' + sistemas.Valor__c);
+    }
+
+
+CHIELD-TO-PARENT
+List<Opportunity> opports = [SELECT Name, Amount,Account.Name, Account.Phone
+                            From Opportunity LIMIT 5];
+
+for(Opportunity opp : opports){
+    System.debug('Informações de Oportunidades');
+    System.debug('Nome: ' + opp.Name);
+    System.debug('Valor: ' + opp.Amount);
+    System.debug('Nome da Conta: ' + opp.Account.Name);
+    System.debug('Telefone da Conta: ' + opp.Account.Phone);
+    System.debug('\n');
+       
+}
+
+
+List<Account> accounts = [Select Name,Phone,(Select Name, Amount From Opportunities) From Account]; for(Account acc : accounts){ System.debug('Informações de Contas'); System.debug('Nome: ' + acc.Name); System.debug('Telefone: ' + acc.Phone); System.debug('\n'); }
+
+
+
+List<Account> accounts = [Select Name,Phone,(Select Name, Amount From Opportunities) From Account]; 
+for(Account acc : accounts){
+System.debug('Informações de Contas');
+System.debug('Nome: ' + acc.Name);
+System.debug('Telefone: ' + acc.Phone);
+System.debug('\n');}
+
+
+Chield-to-parent
+List<Opportunity> opp = [SELECT name, amount, closeDate, account.name, account.phone FROM Opportunity];
+for(Opportunity oppy : opp){
+System.debug('Nome: ' + oppy.Name);
+System.debug('Valor: ' + oppy.Amount);
+System.debug('Data: ' + oppy.CloseDate);
+System.debug('Data: ' + oppy.account.name);
+System.debug('Data: ' + oppy.account.phone);
+System.debug('\n');
+}
+
+List com PERENTE-TO-CHIELD
+
+List<Account> accounts = [ select name, phone, ( select name, amount from opportunities ) from account ]; system.debug(accounts); 
+
+
+List<Account> accounts = [
+   select name, phone, (
+   select name, amount from opportunities
+) from account
+];
+
+FOR(Account acc : accounts) {
+System.debug ('Nome: ' + acc.Name);
+System.debug ('Telefone: ' + acc.Phone);
+    
+    for(Opportunity opp : acc.opportunities){
+        System.debug ('Nome: ' + opp.Name);
+        System.debug ('Valor$: ' + opp.Amount);
+        system.debug('\n');
+    }
+}
+
+
+PARENT-TO-CLIELD
+
+List<Account> accounts = [
+   select name, rating, type, (
+		select name from contacts
+	) from account
+];
+
+FOR(Account acc : accounts) {
+System.debug ('Nome: ' + acc.Name);
+System.debug ('Classificação: ' + acc.Rating);
+System.debug('Tipo: ' + acc.type);
+System.debug('\n');
+    
+    for(Contact ctt : acc.contacts){
+        System.debug ('Nome: ' + acc.Name);
+        System.debug ('Classificação: ' + acc.Rating);
+        system.debug('\n');
+    }
+}
+
+
+Contact ctt = new Contact (
+    //Id da conta que eu atrelar ao contato
+	AccountId = '0018b00001xdXRHAA2',
+    //Id do contato que eu quero fazer a atualização
+    Id = '0038b00002g1kmIAAQ'
+);
+
+UPDATE ctt;
