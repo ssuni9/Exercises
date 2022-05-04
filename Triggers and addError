@@ -1,0 +1,162 @@
+trigger CriarTask on Lead (after insert){
+   List<Task> taskInsertList = new List<Task>();
+
+   for(Lead newLead : trigger.new){
+    Task novaTask    = new Task();
+    novaTask.OwnerId = UserInfo.getUserId();
+    novaTask.WhoId   = newLead.Id;
+    novaTask.ActivityDate = System.today().addDays(5);
+        novaTask.Subject = 'Entrar em contato com o novo Lead';
+    taskInsertList.add(novaTask);
+}
+
+    if(taskInsertList.size()>0){
+               insert taskInsertList;
+    }
+}
+
+
+Lead
+
+trigger LeadTrigger on Lead (before insert) {
+    for(Lead newLead : trigger.new){
+        if(newLead.annualRevenue == null){
+            newLead.annualRevenue = 0.00;
+        }if(newLead.fax == null){
+            newLead.fax = 'Indefinido';
+        }if(newLead.webSite == null){
+            newLead.webSite = 'Não possui';
+        }if(newLead.rating == null){
+            newLead.rating = 'Cold';
+        }
+    }
+
+}
+
+
+
+Account
+
+trigger AccountTrigger on Account (before insert, before update) {
+    for(account acc: trigger.new){
+        if(acc.rating == null){
+            acc.rating = 'Hot';
+        }if(acc.type == null){
+            acc.type = 'Prospect';
+        }if(acc.annualrevenue == null){
+            acc.annualrevenue = 0.00;
+        }
+    }
+
+}
+
+
+
+
+trigger LeadTrigger on Lead (before insert, before update) {
+    for(Lead newLead : trigger.new){
+        if(newLead.annualRevenue == null){
+            newLead.annualRevenue = 0.00;
+        }if(newLead.fax == null){
+            newLead.fax = 'Indefinido';
+        }if(newLead.webSite == null){
+            newLead.webSite = 'Não possui';
+        }if(newLead.rating == null){
+            newLead.rating = 'Cold';
+        }if(newLead.AnnualRevenue >= 0 && newLead.AnnualRevenue < 10000){
+            newLead.rating = 'Cold';
+        }if(newLead.AnnualRevenue >= 10000 && newLead.AnnualRevenue < 100000){
+            newLead.rating = 'Warm';
+        }if(newLead.AnnualRevenue >= 100000){
+            newLead.rating = 'Hot';
+        }
+    }
+}
+
+
+ADD.ERROR
+Podemos utilizar dessa forma em uma trigger para dar erro parq eu seja digotado
+
+ }if(acc.phone == null){
+            acc.phone.addError('Digite novamente - Pato joinha');
+        }
+
+***********************************                                              
+trigger AccountTrigger on Account (before insert) {
+    for(account acc: trigger.new){
+        if(acc.rating == null){
+            acc.rating = 'Hot';
+        }if(acc.type == null){
+            acc.type = 'Prospect';
+        }if(acc.annualrevenue == null){
+            acc.annualrevenue = 0.00;
+        }if(acc.phone == null){
+            acc.phone.addError('Digite novamente - Pato joinha');
+        }if(acc.name.length() < 3){
+            acc.name.addError('Não pode ter menos que 3 caracteres');
+        }if(acc.AnnualRevenue < 0){
+            acc.AnnualRevenue.addError('Valor não pode ser negativo');
+        }
+    }
+
+}
+
+
+*************************
+Aqui estamos colocando que meu campo Phone não pode ser NULL e colocamos uma mensagem de erro.
+trigger Leadzinho on Lead (before insert) {
+    if(trigger.isInsert || trigger.isUpdate){
+        if(trigger.isBefore){
+            for(Lead itemDoLead : Trigger.new){
+                if(itemDolead.phone == null){
+                    itemDoLead.addError('Prencha o telefone hihihihi');
+                }
+            }
+        }else if(trigger.IsAfter){
+            
+        }
+    }
+
+}
+
+
+***********************
+
+trigger AccountNew on Account (before insert, before update) {
+//Inserir Propesct como padrão se o campo Type estiver em branco.
+//Before Insert
+    for(Account account : trigger.new){
+        if(String.isblank(account.Type) && Trigger.isInsert){
+            account.Type='Prospect';
+        }
+// AnnualRevenue se for nulo eu quero que ele preencha 0 como padrão
+//Before Insert
+        if(account.AnnualRevenue == null && Trigger.isInsert){
+            account.AnnualRevenue = 0;
+  }
+// Emitir uma mensagem se o campo telefone estiver vazio
+//Before Insert
+        if(String.isBlank(account.Phone) && Trigger.isInsert){
+            account.Phone.addError('O campo do telefone deve ser preenchido');
+        }  
+// Caso seja inserido um valor negativo, emitir mensagem de erro
+//Before Update
+
+        if(account.AnnualRevenue < 0 && Trigger.isUpdate){
+            account.addError('O campo Receita Anual está invalido!');
+        }        
+    } 
+}
+
+
+trigger LeadTrigger on Lead (before insert, before update) {
+ for(Lead Ld : trigger.new){
+ if(Ld.Phone == null){
+  Ld.Phone.addError('Você deve preencher ou o telefone ou o celular');
+ }
+  if(Ld.MobilePhone == null){   
+     Ld.MobilePhone.addError('Você deve preencher ou o telefone ou o celular');
+}
+}
+}
+
