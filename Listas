@@ -1,0 +1,175 @@
+CRIANDO LISTAS
+
+list<string> Bandasshow = new List<string>();
+
+Bandasshow.add('Scorpions');
+Bandasshow.add('Nirvana');
+Bandasshow.add('Pearl Jam');
+
+system.debug('Minhas bandas do core ' + Bandasshow);
+
+----------------
+(OUTRA FORMA)
+LIST<STRING> nomesBanda = NEW LIST <STRING> (); nomesBanda.ADD('\nBTS,' +' THE WHO,' +' THE ROSE.');
+
+
+--------------------------------
+
+
+List<integer> ValoresMega = new List<integer>();
+
+ValoresMega.add(15);
+ValoresMega.add(07);
+ValoresMega.add(35);
+
+Integer quantidade = ValoresMega.size();
+
+System.debug('Quantidade ' + ValoresMega);
+System.debug('A quantidade é ' + quantidade);
+
+---------------------
+
+List<String> bandasTOP = new List<String>{
+	'Pink floyd', 'Harmonia da Samba', 'U2'
+};
+
+bandasTOP.add('Black Underwear');
+    
+Integer qtde = bandasTOP.size();
+
+System.debug('qtde:'+qtde);
+System.debug('valores:'+bandasTOP);
+
+
+-------------------------------
+
+Características da List
+
+	1- Lista é uma coleção ordenada
+	2- Possui um índice 
+	3- O índice sempre começa do zero 
+	4- Ela aceita valores duplicados 
+
+
+Funçoes da List
+
+Add - Adiciona valores, com ou sem índice
+Set - Definir um valor em um índice especifico
+Get - Pega o valor de um índice especifico 
+Size - Retorna os valores que possui em uma lista
+
+
+
+-------------------------------------
+
+COMENTÁRIOS DO PROF
+
+// Soh existe uma unica lista
+// Dentro dessa lista, Varios valores
+// Size > Retorna a quantidade de valores que tem dentro da lista
+List<String> lstBandas = new List<String>();
+lstBandas.add('Pink floyd' + 'U2' + 'B2K');
+lstBandas.add('Harmonia da Samba');
+lstBandas.add('U2');
+
+// Campo Lista de opção > NA MESMA OPCAO
+
+Integer qtdeValores = lstBandas.size();
+
+System.debug('Qtde de Valores na lista - '+qtdeValores);
+System.debug('O Valor eh - '+lstBandas);
+
+
+----------------------
+
+List<String> bandasTOP = new List<String>{
+	'Pink floyd', 'Harmonia da Samba', 'U2'
+}
+
+Integer qtde = bandasTOP.size();
+
+System.debug('qtde:'+qtde);
+
+// Caracteristicas do List
+
+// 1. List é uma coleção ORDENADA ( Possui um Indice )
+// O que é um Indice
+// Capitulo 3 - 15
+
+// List = 0,1,2,3,4,5... > Posições
+
+List<String> bandasTOP = new List<String>{
+	'Pink floyd', 	'Harmonia da Samba', 	'U2'
+	0				1						2
+}
+
+// Indice sempre começa do 0 
+
+// 2. Aceita Valores DUPLICADOS
+List<String> lstAmigos = new List<String>{
+	'Cleiton', 'Bianca', 'Bianca'
+}
+
+
+// Quantidade Maxima de valores que podem ir na lista
+
+// Criei uma lista de Inteiros e chamei de numerosAbencoados
+// Essa lista nasce 6 indices
+List<Integer> numerosAbencoados = new Integer[6];
+System.debug('1-numerosAbencoados:'+numerosAbencoados);
+
+// (null, null, null, null, null, null)
+//   0     1     2     3     4     5 
+
+// Adicione na posição 0, O valor de 47
+numerosAbencoados.set(0, 47);
+System.debug('2-numerosAbencoados:'+numerosAbencoados);
+// 2-numerosAbencoados:(47, null, null, null, null, null)
+
+numerosAbencoados.add(0, 99);
+// Adicione na posição 1, O valor de 52
+numerosAbencoados.add(1, 52);
+
+numerosAbencoados.add(1, 44);
+
+numerosAbencoados.add(4, 13);
+numerosAbencoados.set(5,67);
+System.debug('Lista de N:'+numerosAbencoados);
+
+Lista de N:(47, 52, null, null, null, null, null, null)
+
+Lista de N:(47, 52, null, null, 13, null, null, null, null)
+
+Lista de N:(99, 52, 47, null, 13, null, null, null, null, null)
+
+Lista de N:(99, 44, 47, 52, 13, null, null, null, null, null)
+//Lista de N:(99, 44, 52, 47, 13, null, null, null, null, null)
+// Sort > Classificação 
+
+// Antes
+> 0, 47
+> 1, 52
+
+// Depois
+> 0, 99
+> 1, 47
+> 2, 52 
+
+// Minha Listinha de Inteiros
+List<Integer> myList = new List<Integer>();
+
+// Adicionei o valor de 47
+myList.add(47);
+
+// Criei uma variavel chamada myNumber
+// Está recebendo o valor da posição 0 da lista myList
+Integer myNumber = myList.get(0);
+
+System.debug('myNumber:'+myNumber);
+
+// Funções da List
+// Add > Adiciona valores , com ou sem indice
+// Set > Definir um valor em um indice especifico
+// Get > Pegar o valor de um indice especifico
+// Size > retorna o numero de valores que tem na lista
+
