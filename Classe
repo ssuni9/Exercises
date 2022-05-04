@@ -1,0 +1,281 @@
+Calcuradora
+
+public class calculadora {
+    public Integer soma(){
+        integer num1 = 10;
+        integer num2 = 20;
+        return num1 + num2;
+    }
+       
+}
+
+Instanciando no developer
+
+calculadora calc = new calculadora();
+integer resultado = calc.soma();
+
+system.debug('Resultado :' + resultado);
+
+-------------------------------------------------
+Calculadora com qualquer valor 
+
+public class calculadora {
+    public Integer soma(integer num1 , integer num2){
+  
+        return num1 + num2;
+    }
+       
+}
+
+Instaciando
+calculadora calc = new calculadora();
+integer resultado = calc.soma(100,200);
+
+system.debug('Resultado :' + resultado);
+
+---------------------------------------------------
+Exemplo:
+
+
+
+
+OBS: PARAMETROS FICAM DENTRO DOS PARENTESES
+
+
+OUTRA FORMA DE CALCULAR
+
+public class calculadora {
+    public decimal soma(decimal num1 , decimal num2){
+  
+        return num1 + num2;
+    }
+       
+}
+
+INSTANCIANDO
+
+calculadora calc = new calculadora();
+decimal resultado = calc.soma(10.5 , 200.5);
+
+system.debug('Resultado :' + resultado);
+system.debug('Resultado :' + calc.soma(10, 40));
+------------------------------------------
+
+** Usar o return ele volta a informação. Sem ele é uma classe morta
+Não da para retornar o Void com o return). 
+
+** Se passarmos os valores na funçao eles serao fixos
+public class Calculadora {
+    public void soma(){
+        integer a = 10;
+        integer b = 20;
+        system.debug('Resultado: ' + (a+b));
+    }
+    
+    public integer somaComRetorno(){
+        //valores fixos, estáticos
+        integer a = 10;
+        integer b = 20;
+        return (a+b);
+    }
+    
+    //parametros servem para passar valores dinamicos
+    //quando o método for chamado, deverá ser passado 2 valores
+    //(a,b) Ex: (1,2)    -  (40,60), qualquer valor
+    public decimal somaComParametros(decimal a, decimal b){
+        return(a+b);
+    }
+}
+-----------------------------------------------------------------------------
+//criando um obj da classe Calculadora.
+Calculadora calc = new Calculadora();
+
+calc.soma(); 
+//iniciado, executado e morre
+
+integer result = calc.somaComRetorno();
+//iniciado, executado, retorna um valor e morre
+system.debug('Returnado: ' + result);
+
+//desta forma não está sendo armazenado em 
+//necas de pitibiriba
+system.debug('Retornado direto: ' + calc.somaComRetorno());
+
+integer n1 = calc.somaComRetorno();  //30
+integer n2 = calc.somaComRetorno();  //30
+
+system.debug('Media: ' + (n1+n2)/2);
+
+//Agora chamando somaComParametros
+
+system.debug('Ex1: ' + calc.somaComParametros(1,2));
+system.debug('Ex1: ' + calc.somaComParametros(10,25));
+system.debug('Ex1: ' + calc.somaComParametros(15,5));
+system.debug('Ex1: ' + calc.somaComParametros(0,5));
+system.debug('Ex1: ' + calc.somaComParametros(66,5));
+
+decimal num1 = calc.somaComParametros(1,2);  //num1 = 3
+decimal num2 = calc.somaComParametros(7,9);  //num2 = 16
+
+decimal mediaTeste = (num1 + num2)/2; //mediaTeste = 9.5
+
+system.debug('Me
+diaTeste: ' + mediaTeste);
+
+
+-----------------------------------------------------
+
+CLASSE:
+public class volkswagensNovo {
+    public string modelo;
+    public integer ano;
+    public string cor;
+    public string meioTransporte = 'carro';
+    
+    public void acelerar(){
+         system.debug('O carro de modelo: '+this.modelo+' de ano: '+this.ano+' de cor: '+this.cor+ ' Está acelerando 150km/h');
+    }
+    public void freiar(){
+         system.debug('O carro de modelo: '+this.modelo+' de ano: '+this.ano+' de cor: '+this.cor+ ' Está freiando a 70km/h');
+    }
+    
+}
+
+JANELA:
+volkswagensNovo carro1 = new volkswagensNovo();
+carro1.modelo = 'Taos';
+carro1.ano = 2022;
+carro1.cor = 'branco';
+carro1.acelerar();
+
+
+volkswagensNovo carro2 = new volkswagensNovo();
+carro2.modelo = 'Jetta';
+carro2.ano = 2019;
+carro2.cor = 'cinza';
+carro2.acelerar();
+
+volkswagensNovo carro3 = new volkswagensNovo();
+carro3.modelo = 'Golf';
+carro3.ano = 2018;
+carro3.cor = 'azul';
+carro3.freiar();
+-----------------------------------------------------
+
+
+public class Jardim {
+	public String nomePopular = 'Jasmim';
+	public String nomeCientifico = 'Jasminum';
+	public Decimal custoDoRamalhete = 20;
+    public Decimal horasDeCultivo = 10;
+
+    	public void nomeCompleto(){
+        System.debug(' Nome Popular: ' + nomePopular + ' ' + 'Nome Científico: ' + nomeCientifico);
+    }  
+
+	    public void calcularCustos(){
+        System.debug(' Custo do Ramalhete: ' + horasDeCultivo * custoDoRamalhete);
+    }  
+}
+
+Comand E
+Jardim garden = new Jardim();
+garden.nomeCompleto();
+garden.calcularCustos();
+
+
+*************************
+
+Feitas por mim para teste
+
+public class LojinhadoAslam {
+    string roupa = 'Azul, R$ 35.00';
+        
+    public void mostraProduto(){
+            system.debug(roupa);
+    }
+}
+
+---------
+
+LojinhadoAslam produtos = new LojinhadoAslam();
+
+produtos.mostraProduto();
+
+
+*************************
+
+public class cachorro {
+    //Nesse exemplo não estou declarando valores, pois iremos declarar depois
+  
+    string nome;
+    string corDosOlhos;
+    string raca;
+    string idade;
+    string corDoPelo;
+    
+    //Ações da minha classe
+    public void comer(){
+        system.debug('O cachorro está comendo!');
+    }
+    
+    public void latir(){
+        system.debug('O cachorro está latindo!');
+    }
+
+}
+------
+
+cachorro Aslam = new cachorro();
+
+Aslam.comer();
+Aslam.latir();
+
+*************************
+
+trigger AccountTrigger on Account (before update, before insert, after insert) {
+	//IRÁ CONVERTER EM UMA STRING O TIPO DE OPERAÇÃO QUE ACIONOU O GATILHO
+    String event = String.valueOf(trigger.operationType);
+        
+    if(event == 'BEFORE_INSERT'){
+        for(Account account: Trigger.new){
+            if(account.AnnualRevenue == null || account.AnnualRevenue < 0.00){
+          		 account.Description.addError('Receita anual não pode ser nula ou negativa.');
+        	}   
+         	else if (account.AnnualRevenue < 100000){
+                account.Rating = 'Cold';
+            }
+             else if (account.AnnualRevenue >=100000 && account.AnnualRevenue<500000){
+                    account.Rating = 'Warm';
+            }        
+            Else if (account.AnnualRevenue >=500000){
+                   account.Rating = 'Hot';
+            }
+        }
+    }
+    
+    if(event == 'BEFORE_UPDATE'){
+        for(Account account: Trigger.new){
+            if(trigger.old[0].rating != account.Rating){
+                account.addError('Não é possivel alterar a classificação');
+            }
+        }
+    }
+    
+    if(event == 'AFTER_INSERT'){
+        for(account account : trigger.new){
+            task newTask = new Task(
+                Subject = 'Boas vinds', 
+                Priority = 'Low',
+                
+                //Relativo a uma conta
+                whatId = account.Id
+                
+                );
+                
+                insert newTask;
+            
+        }
+    }
+       
+}
