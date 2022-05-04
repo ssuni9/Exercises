@@ -1,0 +1,81 @@
+NÃO DEIXAR SALVAR CASO SEJA A MESMA CLASSIFICAÇÃO
+
+trigger AccountTrigger on Account (before update) {
+
+    for(Account acct: Trigger.new){
+
+        if(trigger.old[0].rating != acct.Rating){
+            acct.addError('Não é possivel alterar a classificação só pq você quer huaushsuihiaud');
+        }
+    }
+}
+
+
+Ou
+
+trigger accountTrigger on account (before update){
+     for (account account : trigger.new){
+         if (trigger.old[0].rating == 'Cold' && account.Rating == 'hot'){
+        account.addError('nao é possivel alterar a classificação so pq vc quer');
+     }
+}
+}
+
+RETORNA AS AÇOES QUE RETORNAM OS GATILHOS
+
+trigger accountTrigger on account (before update, before insert){
+    
+    system.debug('Tipo de operação ' + trigger.operetionType);
+     
+}
+
+
+trigger AccountTrigger on Account (before update, before insert, after insert) {
+	//IRÁ CONVERTER EM UMA STRING O TIPO DE OPERAÇÃO QUE ACIONOU O GATILHO
+    String event = String.valueOf(trigger.operationType);
+        
+    if(event == 'BEFORE_INSERT'){
+        for(Account account: Trigger.new){
+            if(account.AnnualRevenue == null || account.AnnualRevenue < 0.00){
+          		 account.Description.addError('Receita anual não pode ser nula ou negativa.');
+        	}   
+         	else if (account.AnnualRevenue < 100000){
+                account.Rating = 'Cold';
+            }
+             else if (account.AnnualRevenue >=100000 && account.AnnualRevenue<500000){
+                    account.Rating = 'Warm';
+            }        
+            Else if (account.AnnualRevenue >=500000){
+                   account.Rating = 'Hot';
+            }
+        }
+    }
+    
+    if(event == 'BEFORE_UPDATE'){
+        for(Account account: Trigger.new){
+            if(trigger.old[0].rating != account.Rating){
+                account.addError('Não é possivel alterar a classificação');
+            }
+        }
+    }
+    
+    if(event == 'AFTER_INSERT'){
+        for(account account : trigger.new){
+            if(account.AnnualRevenue >= 500000){
+            task newTask = new Task(
+                Subject = 'Boas vinds ' + account.Name, 
+                Priority = 'Low',
+                whatId = account.Id
+                
+                );
+                
+                insert newTask;
+           
+        }
+      
+        }
+        }
+       
+}
+    
+
