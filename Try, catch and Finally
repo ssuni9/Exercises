@@ -1,0 +1,40 @@
+//Tenta inserir uma conta sem o Campo de Name/Nome
+//Pegue o erro de DmlException que demos o nome de erro
+//Imprima uma mensagem de texto Insira o nome da conta
+//Não devemos usar isso em qualquer linha de código, os campos são utilizados apenas para exceções
+Account acc = new Account();
+Try{
+    insert acc;
+}catch(DmlException erro){
+    System.debug('Insira o nome da conta');
+    
+}
+
+
+
+// try - tente atualizar o registro
+try{
+    List<Account> newAccount = [select billingCountry from account where billingCountry = null];
+
+    for(Account acc : newAccount){
+        acc.billingCountry = 'BR';
+    }
+    
+    update newAccount;
+}catch(Exception e){
+    system.debug('Operação não foi concluida');
+    system.debug('Error: ' + e);
+}
+//catch é ativado se ocorrer algum erro
+
+
+Inserir conta com o Try
+
+Account acc = new Account();
+try{
+    acc.name='Matheus';
+   insert acc; 
+    
+}catch(Exception Erro){
+    System.debug('Preencha os campos Obrigatorios');
+}
