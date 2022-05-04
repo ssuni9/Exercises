@@ -1,0 +1,63 @@
+public class Calculadora2 {
+    
+    public static void soma(){
+        integer a = 10;
+        integer b = 20;
+        system.debug('Resultado: ' + (a+b));
+    }
+    
+    public integer somaComRetorno(){
+        //valores fixos, estáticos
+        integer a = 10;
+        integer b = 20;
+        return (a+b);
+    }
+    
+    public static decimal somaComParametros(decimal a, decimal b){
+        return(a+b);
+    }
+}
+
+----------------------------
+Apex terminal 
+
+
+//usando o static de uma classe 
+//nome da classeDaClasse.nomeMetodo(parametros)
+
+system.debug(
+Calculadora2.somaComParametros(1,1)
+    );
+
+
+Para ter a saida no terminal precisamos usar o Return para tambem usar o system.debug e dar a saida como no código acima. 
+
+Pizzaria pizza1 = new Pizzaria();
+pizza1.pizza = 'calabresa';
+
+Pizzaria pizza2 = new Pizzaria();
+pizza2.pizza = 'quatroQuejos';
+
+Pizzaria pizza3 = new Pizzaria();
+pizza3.pizza = 'mariaBonita';
+-----------------------------------------
+public class CalculadoraMagica {
+    
+    public static void somar(){
+        integer num1 = 10;
+        integer num2 = 20;
+        system.debug('Resultado: ' + (num1+num2));
+    }
+    
+    
+    
+    public static decimal somaComMagica(decimal num1, decimal num2){
+        return(num1+num2);
+    }
+}
+
+
+system.debug(
+CalculadoraMagica.somaComMagica(1,1)
+    );
+----------------------------------------------
